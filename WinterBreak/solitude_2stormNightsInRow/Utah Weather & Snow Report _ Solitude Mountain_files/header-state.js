@@ -1,0 +1,1 @@
+define(function(require){"use strict";var state={components:[]};function registerComponent(component){state.components.push(component)}return{state:state,registerComponent:registerComponent}});

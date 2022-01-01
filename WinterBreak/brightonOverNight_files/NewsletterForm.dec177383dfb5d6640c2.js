@@ -1,0 +1,2 @@
+(window.brJsonP=window.brJsonP||[]).push([[31],{137:function(t,e,n){"use strict";n.r(e),n.d(e,"default",(function(){return a}));var i=n(104);const s=".js-email";class a extends i.default{afterInit(){this.$email=this.$element.find(s)}handleFormSubmit(t){this.validateForm()||t.preventDefault()}}}}]);
+//# sourceMappingURL=NewsletterForm.dec177383dfb5d6640c2.js.map

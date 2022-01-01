@@ -1,0 +1,69 @@
+
+<!-- saved from url=(0088)https://br-brightonskiresort.secure-cdn.na2.accessoticketing.com/embed/shim.html?_v=5.20 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+function localStorageName(item) {
+	// the store is prefixing localStorage with "ls"
+	return "ls."+ item;
+}
+function getLocalStorageSessionKey(){
+    try {
+			var session = (localStorage!==undefined) ? localStorage.getItem(localStorageName('_session')) : undefined;
+			if(session){
+				var sessionObject = JSON.parse(session);
+				if(sessionObject.key){
+					return sessionObject.key;
+				}
+			}
+		}catch(e){
+			return false;
+    }
+    return false;
+}
+
+function getTotalAndQtyFromLocalStorage(localSessionKey){
+
+    try {
+			var cart = localStorage.getItem(localStorageName(localSessionKey + 'GetCartSummary'));
+			if(cart){
+				var cartObject = JSON.parse(cart);
+				// verify properties exist...
+				if(cartObject.total!==undefined && cartObject.CART!==undefined && cartObject.CART.qty!==undefined){
+					return {
+						total: Number(cartObject.total),
+						qty: Number(cartObject.CART.qty)
+					};
+				}
+			}
+    }catch(e){
+			return false;
+    }
+    return false;
+}
+
+/* There are other events to watch for to trigger the callback. I'm using this to match accesso.js */
+function onDomReady( callback ){
+	document.onreadystatechange = function () {
+		if ( document.readyState == "complete" ) {
+			callback.apply();
+		}
+	};
+}
+function getCartFromLocalStorage() {
+	try {
+		var key = getLocalStorageSessionKey();
+		if (key) {
+			var qtyAndTotal = getTotalAndQtyFromLocalStorage(key);
+			if (qtyAndTotal) {
+				parent.postMessage(JSON.stringify([qtyAndTotal.qty, qtyAndTotal.total]), "*");
+			}
+		}
+	} catch (e) {
+	}
+}
+onDomReady(getCartFromLocalStorage);
+    </script>
+</head>
+<body>
+
+</body></html>
