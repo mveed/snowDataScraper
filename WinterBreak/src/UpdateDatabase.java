@@ -40,7 +40,7 @@ public class UpdateDatabase {
         /*
          * Replace connection string from the Azure Cosmos DB Portal
          */
-        MongoClientURI uri = new MongoClientURI("mongodb://mveed:BPXalacbVSyTuc7Q5pfSbBjgsj9LdkPS4FAWqA5db9esUs6CRbYoy6D54RSWxIxKWAhcUosmnBD1UuiAJRtNCg==@mveed.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@mveed@");
+        MongoClientURI uri = new MongoClientURI("<insert uri here");
 
         MongoClient mongoClient = null;
         try {
